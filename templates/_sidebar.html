@@ -1,0 +1,37 @@
+<div class="sidebar-shell d-flex flex-column h-100">
+  <div class="sidebar-brand border-bottom">
+    <a class="text-decoration-none" href="{{ url_for('dashboard') }}">
+      <span class="brand-mark">S</span>
+      <div>
+        <h1 class="brand-title mb-1">Skripsi<span>.</span></h1>
+        <p class="brand-subtitle mb-0">Classification System</p>
+      </div>
+    </a>
+  </div>
+
+  <nav class="nav flex-column gap-2 p-3">
+    <a class="nav-link sidebar-link {% if active_page == 'dashboard' %}active{% endif %}" href="{{ url_for('dashboard') }}">
+      <i class="fa fa-dashboard"></i>
+      <span>Dashboard</span>
+    </a>
+    <a class="nav-link sidebar-link {% if active_page == 'data_pengajar' %}active{% endif %}" href="{{ url_for('data_pengajar') }}">
+      <i class="fa fa-database"></i>
+      <span>Data Pengajar</span>
+    </a>
+    <a class="nav-link sidebar-link {% if active_page == 'rekapan' %}active{% endif %}" href="{{ url_for('rekapan') }}">
+      <i class="fa fa-bar-chart"></i>
+      <span>Rekapan Klasifikasi</span>
+    </a>
+    <a class="nav-link sidebar-link {% if active_page == 'preprocessing' %}active{% endif %}" href="{{ url_for('preprocessing') }}">
+      <i class="fa fa-upload"></i>
+      <span>Pre-Processing</span>
+    </a>
+  </nav>
+
+  <div class="sidebar-user mt-auto p-3">
+    <div class="sidebar-user-card">
+      <p class="text-uppercase small mb-1">Logged In As</p>
+      <h2 class="h5 mb-0">{{ session.get('user', 'Administrator') }}</h2>
+    </div>
+  </div>
+</div>

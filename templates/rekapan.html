@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <section class="row g-4 mb-4">
+    {% for item in summary_cards %}
+      <div class="col-md-6 col-xl-3">
+        <div class="metric-card metric-{{ item.accent }}">
+          <div>
+            <p class="metric-label">{{ item.title }}</p>
+            <h2 class="metric-value">{{ item.value }}</h2>
+          </div>
+          <div class="metric-icon">
+            <i class="fa fa-pie-chart"></i>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </section>
+
+  <section class="row g-4">
+    <div class="col-xl-8">
+      <div class="content-card h-100">
+        <div class="content-card-header">
+          <div>
+            <p class="eyebrow mb-2">Classification Summary</p>
+            <h3 class="content-title">Rekap Hasil</h3>
+          </div>
+          <span class="badge app-badge">Latest snapshot</span>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table app-table align-middle mb-0">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Pengajar</th>
+                <th>Kategori</th>
+                <th>Skor</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for row in classification_rows %}
+                <tr>
+                  <td>{{ row.no }}</td>
+                  <td>{{ row.pengajar }}</td>
+                  <td><span class="badge category-badge">{{ row.kategori }}</span></td>
+                  <td>{{ row.skor }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-4">
+      <div class="content-card h-100">
+        <div class="content-card-header">
+          <div>
+            <p class="eyebrow mb-2">Notes</p>
+            <h3 class="content-title">Insight Cepat</h3>
+          </div>
+        </div>
+
+        <div class="timeline-list">
+          <div class="timeline-item">
+            <div class="timeline-dot bg-success"></div>
+            <div>
+              <h4>Excellent dominan</h4>
+              <p>Mayoritas data terbaru berada di kategori tinggi.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot bg-warning"></div>
+            <div>
+              <h4>Perlu review manual</h4>
+              <p>Beberapa skor menengah cocok untuk evaluasi lanjutan.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot bg-primary"></div>
+            <div>
+              <h4>Dashboard-ready</h4>
+              <p>Tampilan bootstrap ini sudah siap dijadikan dasar visual halaman lanjutan.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
